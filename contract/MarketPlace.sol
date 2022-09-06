@@ -40,9 +40,9 @@ contract MarketPlace is OwnerPausableUpgradeSafe, ReentrancyGuard, Initializable
     MavNFT public nft;
 
 
-    //国库地址
+    // Treasury Address
     address public treasury;
-    //平台费率
+    // Platform fee ratio
     uint256 public feeNumerator;
 
   
@@ -288,7 +288,7 @@ contract MarketPlace is OwnerPausableUpgradeSafe, ReentrancyGuard, Initializable
 
         // warning: will not work for usual erc721
         // address author = IERC721TokenAuthor(address(nft)).tokenAuthor(nftId);
-        //版权税
+        // Royalty
         if (author != auctioneer) {  // pay royalty
             uint256 payToAuthor = currentBid * authorFee / DENOMINATOR;
             payToAuctioneer -= payToAuthor;
@@ -298,7 +298,7 @@ contract MarketPlace is OwnerPausableUpgradeSafe, ReentrancyGuard, Initializable
         }
 
 
-        //平台手续费
+        // Platform Service Fee
         uint256 fee = 0;
         fee = currentBid * uint256(feeNumerator) / uint256(DENOMINATOR);
 
@@ -473,7 +473,7 @@ contract MarketPlace is OwnerPausableUpgradeSafe, ReentrancyGuard, Initializable
        
 
 
-        //平台手续费
+        // Platform Service Fee
         uint256 fee = 0;
         fee = amount * uint256(feeNumerator) / uint256(DENOMINATOR);
 
